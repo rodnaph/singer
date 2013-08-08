@@ -9,8 +9,8 @@ Just some ideas of how it could be neat to write threaded code in PHP.
 use Singer\Thread;
 
 Thread::last(array(1,2,3))
-    ->map($inc)
-    ->filter($even)
+    ->array_map($inc)
+    ->array_filter($even)
     ->value(); // array(2, 4)
 ```
 

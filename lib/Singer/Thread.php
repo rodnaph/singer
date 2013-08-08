@@ -69,32 +69,18 @@ class Thread
     }
 
     /**
-     * Map function over the data (or context)
+     * Catch calls to functions
      *
-     * @param Callable $f
-     *
-     * @return Thread
-     */
-    public function map($f)
-    {
-        $threader = $this->threader;
-        $this->context = $threader('array_map');
-
-        return $this;
-    }
-
-    /**
-     * Apply filter to the data or context
-     *
-     * @param Callable $f
-     * @param mixed $data
+     * @param string $name
+     * @param array $params
      *
      * @return Thread
      */
-    public function filter($f, $data = null)
+    public function __call($name, $params)
     {
         $threader = $this->threader;
-        $this->context = $threader('array_filter');
+
+        $this->context = $threader($name, $params);
 
         return $this;
     }
