@@ -86,14 +86,34 @@ class Thread
     public function inNamespace($namespace)
     {
         $this->caller = function ($name) use ($namespace) {
-            return sprintf(
-                '%s\%s',
-                $namespace,
-                $name
-            );
+            return sprintf('%s\%s', $namespace, $name);
         };
 
         return $this;
+    }
+
+    /**
+     * Change scope to call static functions on class
+     *
+     * @param string $class
+     *
+     * @return Thread
+     */
+    public function onClass($class)
+    {
+        return $this->callOn($class);
+    }
+
+    /**
+     * Change scope to call on object
+     *
+     * @param object $object
+     *
+     * @return Thread
+     */
+    public function onObject($object)
+    {
+        return $this->callOn($object);
     }
 
     /**
@@ -119,6 +139,22 @@ class Thread
     public function value()
     {
         return $this->context;
+    }
+
+    /**
+     * Set the caller to use the target (class name or object)
+     *
+     * @param mixed $target
+     *
+     * @return Thread
+     */
+    protected function callOn($target)
+    {
+        $this->caller = function ($name) use ($target) {
+            return array($target, $name);
+        };
+
+        return $this;
     }
 
     /**
