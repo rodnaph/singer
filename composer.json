@@ -1,0 +1,10 @@
+{
+    "name": "rodnaph/singer",
+    "description": "PHP Threading",
+    "autoload": {
+        "psr-0": { "": "lib/" }
+    },
+    "require": {
+        "php": ">=5.3.3"
+    }
+}
