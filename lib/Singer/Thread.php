@@ -10,62 +10,90 @@ class Thread
     private $context;
 
     /**
-     * Create a new 'thread first' Thread
+     * @var Callable
+     */
+    private $threader;
+
+    /**
+     * @var string
+     */
+    private $namespace;
+
+    /**
+     * @var Callable
+     */
+    private $caller;
+
+    /**
+     * Create a new threader, 'thread last' by default in root namespace
      *
      * @return Thread
      */
-    public static function first($context)
+    public static function create($context)
     {
-        return new Thread(
-            $context,
-            self::threader('push')
-        );
-    }
+        $t = new Thread($context);
+        $t->last();
+        $t->inNamespace('');
 
-    /**
-     * New 'thread last' Thread
-     *
-     * @return Thread
-     */
-    public static function last($context)
-    {
-        return new Thread(
-            $context,
-            self::threader('unshift')
-        );
-    }
-
-    /**
-     * Create 'threader' function to interleave context
-     * into function arguments before execution
-     *
-     * @param string $type
-     *
-     * @return Callable
-     */
-    protected static function threader($type)
-    {
-        $context = $this->context;
-
-        return function ($f, array $args = array()) use ($context) {
-            $threader = sprintf('array_%s', $type);
-            $params = call_user_func_array(
-                $threader,
-                array($context, $args)
-            );
-
-            return call_user_func_array($f, $params);
-        };
+        return $t;
     }
 
     /**
      * @param string $context
-     * @param Callable $threader
      */
-    protected function __construct($context, $threader)
+    protected function __construct($context)
     {
         $this->context = $context;
-        $this->threader = $threader;
+    }
+
+    /**
+     * Change to using 'thread first'
+     *
+     * @return Thread
+     */
+    public function first()
+    {
+        $this->threader = function ($context, $args) {
+            array_unshift($args, $context);
+            return $args;
+        };
+
+        return $this;
+    }
+
+    /**
+     * Change to using 'thread last'
+     *
+     * @return Thread
+     */
+    public function last()
+    {
+        $this->threader = function ($context, $args) {
+            array_push($args, $context);
+            return $args;
+        };
+
+        return $this;
+    }
+
+    /**
+     * Change scope to specified namespace
+     *
+     * @param string $namespace
+     *
+     * @return Thread
+     */
+    public function inNamespace($namespace)
+    {
+        $this->caller = function ($name) use ($namespace) {
+            return sprintf(
+                '%s\%s',
+                $namespace,
+                $name
+            );
+        };
+
+        return $this;
     }
 
     /**
@@ -78,9 +106,7 @@ class Thread
      */
     public function __call($name, $params)
     {
-        $threader = $this->threader;
-
-        $this->context = $threader($name, $params);
+        $this->context = $this->thread($name, $params);
 
         return $this;
     }
@@ -93,5 +119,22 @@ class Thread
     public function value()
     {
         return $this->context;
+    }
+
+    /**
+     * Thread context into named function and assigned context
+     * to the result
+     *
+     * @return mixed
+     */
+    protected function thread($name, $params)
+    {
+        $threader = $this->threader;
+        $caller = $this->caller;
+
+        $threaded = $threader($this->context, $params);
+        $callable = $caller($name);
+
+        return call_user_func_array($callable, $threaded);
     }
 }

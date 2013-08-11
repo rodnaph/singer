@@ -2,6 +2,8 @@
 
 namespace Singer;
 
+use Singer\Thread;
+
 class ThreadTest extends \PHPUnit_Framework_TestCase
 {
     private $inc, $odd;
@@ -9,23 +11,37 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->inc = function ($x) {
+            print_r($x);
             return $x + 1;
         };
         $this->odd = function ($x) {
-            return $x % 2 != 1;
+            return $x % 2 == 1;
         };
     }
 
-    public function testThreadLast()
+    public function testThreadFirstAndLast()
     {
-        $res = Thread::last(array(1,2,3))
-            ->map($this->inc)
-            ->filter($this->odd)
+        $res = Thread::create(array(1,2,3))
+            ->last()
+            ->array_map($this->inc)
+            ->first()
+            ->array_filter($this->odd)
             ->value();
-        $this->assertEquals(array(3), $res);
+        $this->assertEquals(array(3), array_values($res));
     }
 
-    public function testThreadFirst()
+    public function testCanThreadInNamespace()
     {
+        $this->markTestIncomplete();
+    }
+
+    public function testCanThreadOnStaticMethods()
+    {
+        $this->markTestIncomplete();
+    }
+
+    public function testCanThreadOnObjectMethods()
+    {
+        $this->markTestIncomplete();
     }
 }
