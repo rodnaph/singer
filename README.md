@@ -67,7 +67,7 @@ Again, you can change the namespace scope arbitrarily.
 Until now we've just been calling plain old functions, but you can also call class
 and instance methods too.
 
-```
+```php
 T::create('foo')
     ->onClass('Some\Static\Class')
     ->the_method() // metod Class::the_method()
