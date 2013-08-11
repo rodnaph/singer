@@ -15,11 +15,6 @@ class Thread
     private $threader;
 
     /**
-     * @var string
-     */
-    private $namespace;
-
-    /**
      * @var Callable
      */
     private $caller;
@@ -167,8 +162,9 @@ class Thread
     {
         $threader = $this->threader;
         $caller = $this->caller;
+        $context = $this->context;
 
-        $threaded = $threader($this->context, $params);
+        $threaded = $threader($context, $params);
         $callable = $caller($name);
 
         return call_user_func_array($callable, $threaded);

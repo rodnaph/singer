@@ -27,16 +27,17 @@ random parameter orders).
 
 ## Thread first/last
 
-By default Singer uses 'thread last'.  This means that the context is added as the
-last argument too all the functions called.  You can also use 'thread first', where
-the context is inserted as the first argument.
-
 As shown above you can switch between these methods during a chain of execution.
 
 ```php
+function array_last($array)
+{
+    return $array[count($array) - 1];
+}
+
 T::create(array(1,2,3))
     ->last()
-    ->array_pop()
+    ->array_last()
     ->first()
     ->range(10)
     ->value(); // array(3,4,5,6,7,8,9,10);
