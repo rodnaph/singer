@@ -79,6 +79,20 @@ T::create('foo')
 
 And as usual, these can be included as needed during execution.
 
+## Utilities
+
+There is also a contributed namespace with some utility functions, meant to provide
+a cleaner API than PHP's.
+
+```php
+T::create(array(1,2,3))
+    ->inNamespace('Singer\Util')
+    ->map($inc)
+    ->filter($even)
+    ->reduce($toTotal, 0)
+    ->value();
+```
+
 ## About
 
 Singer is just playing with some ideas to see if this could be a useful utility in
