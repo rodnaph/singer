@@ -2,7 +2,7 @@
 # Singer, PHP Threading
 
 PHP provides lots of utilities, but calling them in an understandable way usually
-leads to a mess of code.  Singer tried to clean this up by allowing 'threading' of
+leads to a mess of code.  Singer tries to clean this up by allowing 'threading' of
 results through functions/methods, giving you a readable chain of business logic.
 
 ## Usage
