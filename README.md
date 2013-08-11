@@ -13,7 +13,7 @@ array, and then filters it with _$even_.  Finally fetching the resultant value.
 ```php
 use Singer\Thread as T;
 
-T:create(array(1,2,3))
+T::create(array(1,2,3))
     ->array_map($inc)
     ->first()
     ->array_filter($even)
