@@ -7,8 +7,9 @@ results through functions/methods, giving you a readable chain of business logic
 
 ## Usage
 
-This example assumes two functions _$inc_ and _$even_, then maps _$inc_ over the
-array, and then filters it with _$even_.  Finally fetching the resultant value.
+This example assumes two functions _$inc_ and _$even_, then uses PHP's standard
+library *array_map* to map _$inc_ over the array, and then also uses the standard
+*array_filter* to filter it with _$even_.  Finally fetching the resultant value.
 
 ```php
 use Singer\Thread as T;
@@ -19,6 +20,9 @@ T::create(array(1,2,3))
     ->array_filter($even)
     ->value(); // array(2, 4)
 ```
+
+So we can use Singer to stitch together bog standard functions in a threaded/chainable
+way.
 
 By default Singer does 'thread last', or inserting the context as the last argument
 to the function.  You can see from the above example we can switch between this and
