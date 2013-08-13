@@ -2,6 +2,9 @@
 
 namespace Singer;
 
+/**
+ *
+ */
 class Thread
 {
     /**
@@ -26,19 +29,23 @@ class Thread
      */
     public static function create($context)
     {
-        $t = new Thread($context);
-        $t->last();
-        $t->inNamespace('');
+        $t = new Thread($context, null, null);
 
-        return $t;
+        return $t
+            ->last()
+            ->inNamespace('');
     }
 
     /**
      * @param string $context
+     * @param Callable $threader
+     * @param Callable $caller
      */
-    protected function __construct($context)
+    protected function __construct($context, $threader, $caller)
     {
         $this->context = $context;
+        $this->threader = $threader;
+        $this->caller = $caller;
     }
 
     /**
@@ -48,12 +55,14 @@ class Thread
      */
     public function first()
     {
-        $this->threader = function ($context, $args) {
-            array_unshift($args, $context);
-            return $args;
-        };
-
-        return $this;
+        return new Thread(
+            $this->context,
+            function ($context, $args) {
+                array_unshift($args, $context);
+                return $args;
+            },
+            $this->caller
+        );
     }
 
     /**
@@ -63,12 +72,14 @@ class Thread
      */
     public function last()
     {
-        $this->threader = function ($context, $args) {
-            array_push($args, $context);
-            return $args;
-        };
-
-        return $this;
+        return new Thread(
+            $this->context,
+            function ($context, $args) {
+                array_push($args, $context);
+                return $args;
+            },
+            $this->caller
+        );
     }
 
     /**
@@ -80,11 +91,13 @@ class Thread
      */
     public function inNamespace($namespace)
     {
-        $this->caller = function ($name) use ($namespace) {
-            return sprintf('%s\%s', $namespace, $name);
-        };
-
-        return $this;
+        return new Thread(
+            $this->context,
+            $this->threader,
+            function ($name) use ($namespace) {
+                return sprintf('%s\%s', $namespace, $name);
+            }
+        );
     }
 
     /**
@@ -145,11 +158,13 @@ class Thread
      */
     protected function callOn($target)
     {
-        $this->caller = function ($name) use ($target) {
-            return array($target, $name);
-        };
-
-        return $this;
+        return new Thread(
+            $this->context,
+            $this->threader,
+            function ($name) use ($target) {
+                return array($target, $name);
+            }
+        );
     }
 
     /**
@@ -162,11 +177,10 @@ class Thread
     {
         $threader = $this->threader;
         $caller = $this->caller;
-        $context = $this->context;
 
-        $threaded = $threader($context, $params);
-        $callable = $caller($name);
-
-        return call_user_func_array($callable, $threaded);
+        return call_user_func_array(
+            $threader($this->context, $params),
+            $caller($name)
+        );
     }
 }
