@@ -80,9 +80,9 @@ and instance methods too.
 ```php
 T::create('foo')
     ->onClass('Some\Static\Class')
-    ->the_method() // metod Class::the_method()
+    ->the_method() // Class::the_method()
     ->onObject($foo)
-    ->bar() // method $foo->bar()
+    ->bar() // $foo->bar()
     ->value();
 ```
 
@@ -105,5 +105,5 @@ T::create(array(1,2,3))
 ## About
 
 Singer is just playing with some ideas to see if this could be a useful utility in
-PHP.  If you'd like to contribute ideas or code just open an issue or  pull request.
+PHP.  If you'd like to contribute ideas or code just open an issue or pull request.
 
