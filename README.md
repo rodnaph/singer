@@ -29,6 +29,11 @@ to the function.  You can see from the above example we can switch between this 
 'thread first' at will (here to get around the annoyingness of PHPs seemingly
 random parameter orders).
 
+## Installation
+
+To install Singer you can either just clone/download from Github, or install 
+[through Composer](https://packagist.org/packages/rodnaph/singer).
+
 ## Thread first/last
 
 As shown above you can switch between these methods during a chain of execution.
