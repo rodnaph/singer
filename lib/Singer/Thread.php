@@ -34,6 +34,17 @@ class Thread
     }
 
     /**
+     * @param mixed $context
+     *
+     * @return Thread
+     */
+    public static function singer($context)
+    {
+        return self::thread($context)
+            ->inNamespace('Singer\Util');
+    }
+
+    /**
      * @param string $context
      */
     protected function __construct($context)

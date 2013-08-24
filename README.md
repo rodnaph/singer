@@ -90,8 +90,8 @@ And as usual, these can be included as needed during execution.
 
 ## Utilities
 
-There is also a contributed namespace with some utility functions, meant to provide
-a cleaner API than PHP's.
+There is also a [utilities namespace](docs/utils.md) with some utility functions, meant to provide
+a hopefully cleaner API than PHP's.
 
 ```php
 T::create(array(1,2,3))
@@ -99,6 +99,14 @@ T::create(array(1,2,3))
     ->map($inc)
     ->filter($even)
     ->reduce($toTotal, 0)
+    ->value();
+```
+
+You can create a threader using this namespace as the default using the *singer* function.
+
+```php
+T::singer($array)
+    ->map($etc)
     ->value();
 ```
 
