@@ -10,7 +10,7 @@ usually pretty clunky).
 Wrapper for *array_map*
 
 ```php
-$result = Util::map(
+$result = map(
     $function,
     $array
 )
@@ -21,7 +21,7 @@ $result = Util::map(
 Wrapper for *array_filter*
 
 ```php
-$result = Util::filter(
+$result = filter(
     $function,
     $array
 );
@@ -33,13 +33,13 @@ Wrapper for *array_reduce*
 
 ```php
 // with 2-args
-$result = Util::reduce(
+$result = reduce(
     $function,
     $array
 );
 
 // with 3-args
-$result = Util::reduce(
+$result = reduce(
     $function,
     $initial,
     $array
@@ -65,6 +65,6 @@ sum(
 ) // => array('total' => 6)
 ```
 
-This makes it a so can avoid messing around with the
+This makes it a so you can avoid messing around with the
 accumulator, because mutating it is icky.
 
