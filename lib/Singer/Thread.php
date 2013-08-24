@@ -40,7 +40,9 @@ class Thread
      */
     public static function singer($context)
     {
-        return self::thread($context)
+        include_once __DIR__ . '/Util.php';
+
+        return self::create($context)
             ->inNamespace('Singer\Util');
     }
 
