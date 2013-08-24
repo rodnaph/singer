@@ -35,4 +35,16 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(6, $actual);
     }
+
+    public function testSum()
+    {
+        $sum = function ($x) {
+            return array(
+                'total' => $x
+            );
+        };
+        $actual = \Singer\Util\sum($sum, array(1, 2, 3));
+
+        $this->assertEquals(6, $actual['total']);
+    }
 }

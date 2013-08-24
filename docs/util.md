@@ -46,3 +46,25 @@ $result = Util::reduce(
 );
 ```
 
+## sum
+
+Allows giving a function which returns an assoc of array
+of keys and values, where the values will be summed over
+the series.
+
+```php
+sum(
+  function ($item) {
+    return array(
+      "total" => $item
+    );
+  },
+  array(
+    1, 2, 3
+  )
+) // => array('total' => 6)
+```
+
+This makes it a so can avoid messing around with the
+accumulator, because mutating it is icky.
+
