@@ -64,6 +64,8 @@ T::create($x)
     ->value();
 ```
 
+This uses 1-based indexing. So _1_ first the first argument position, _2_ for the second, etc...
+
 ## Namespaces
 
 When calling functions on the threader by default it'll look for those functions in
