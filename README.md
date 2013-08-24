@@ -64,7 +64,7 @@ T::create($x)
     ->value();
 ```
 
-This uses 1-based indexing. So _1_ first the first argument position, _2_ for the second, etc...
+This uses 1-based indexing. So _1_ for the first argument position, _2_ for the second, etc...
 
 ## Namespaces
 
