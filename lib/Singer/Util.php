@@ -39,7 +39,6 @@ function filter($f, array $args)
 function reduce($f, $x, $y = null)
 {
     return $y
-        ? array_reduce($x, $f)
-        : array_reduce($y, $f, $x);
+        ? array_reduce($y, $f, $x)
+        : array_reduce($x, $f);
 }
-
