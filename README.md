@@ -1,4 +1,3 @@
-
 # Singer, PHP Threading
 
 PHP provides lots of utilities, but calling them in an understandable way usually
@@ -61,7 +60,7 @@ You can also thread into arbitrary positions with _nth_
 ```php
 T::create($x)
     ->nth(3)
-    ->someFunc()
+    ->someFunc($one, $two)
     ->value();
 ```
 
