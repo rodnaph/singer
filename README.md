@@ -90,7 +90,7 @@ And as usual, these can be included as needed during execution.
 
 ## Utilities
 
-There is also a [utilities namespace](docs/utils.md) with some utility functions, meant to provide
+There is also a [utilities namespace](docs/util.md) with some utility functions, meant to provide
 a hopefully cleaner API than PHP's.
 
 ```php
