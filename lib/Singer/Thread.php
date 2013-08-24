@@ -83,6 +83,23 @@ class Thread
     }
 
     /**
+     * Thread into nth position
+     *
+     * @param integeger $n
+     *
+     * @return Thread
+     */
+    public function nth($n)
+    {
+        $this->threader = function ($context, $args) use ($n) {
+            array_splice($args, $n - 1, 0, array($context));
+            return $args;
+        };
+
+        return $this;
+    }
+
+    /**
      * Change scope to specified namespace
      *
      * @param string $namespace

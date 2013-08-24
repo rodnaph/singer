@@ -54,6 +54,17 @@ T::create(array(1,2,3))
 
 Contrived, but an example.
 
+## Thead to nth
+
+You can also thread into arbitrary positions with _nth_
+
+```php
+T::create($x)
+    ->nth(3)
+    ->someFunc()
+    ->value();
+```
+
 ## Namespaces
 
 When calling functions on the threader by default it'll look for those functions in

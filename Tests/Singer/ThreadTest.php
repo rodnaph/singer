@@ -65,6 +65,17 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
             ->value();
         $this->assertEquals(array(2,3,4), array_values($res));
     }
+
+    public function testThreadingNthArgument()
+    {
+        $res = Thread::create(array(1,2,3))
+            ->nth(2)
+            ->array_map($this->inc)
+            ->nth(1)
+            ->array_filter($this->odd)
+            ->value();
+        $this->assertEquals(array(3), array_values($res));
+    }
 }
 
 class Bazzle
