@@ -68,3 +68,14 @@ sum(
 This makes it a so you can avoid messing around with the
 accumulator, because mutating it is icky.
 
+## sort
+
+Provide a user defined sorting function.
+
+```php
+$lowToHigh = function($a, $b) {
+  return $a > $b;
+};
+
+sort($lowToHigh, $array);
+```

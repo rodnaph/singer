@@ -86,3 +86,16 @@ function sum($f, array $args)
 
     return reduce($summer, array(), $args);
 }
+
+/**
+ * @param Callable $f
+ * @param array $args
+ *
+ * @return array
+ */
+function sort($f, array $args)
+{
+    usort($args, $f);
+
+    return $args;
+}

@@ -47,4 +47,16 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(6, $actual['total']);
     }
+
+    public function testSort()
+    {
+        $lowToHigh = function($a, $b) {
+            return $a > $b;
+        };
+
+        $this->assertEquals(
+            array(1, 3, 5),
+            \Singer\Util\sort($lowToHigh, array(5, 1, 3))
+        );
+    }
 }
