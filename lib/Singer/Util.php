@@ -74,9 +74,7 @@ function reduce($f, $x, $y = null)
 function sum($f, array $args)
 {
     $summer = function ($acc, $x) use ($f) {
-        $result = $f($x);
-
-        foreach ($result as $k => $v) {
+        foreach ($f($x) as $k => $v) {
             if (!isset($acc[$k])) {
                 $acc[$k] = 0;
             }
@@ -86,9 +84,5 @@ function sum($f, array $args)
         return $acc;
     };
 
-    return reduce(
-        $summer,
-        array(),
-        $args
-    );
+    return reduce($summer, array(), $args);
 }
