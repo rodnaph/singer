@@ -53,7 +53,7 @@ T::create(array(1,2,3))
 
 Contrived, but an example.
 
-## Thead to nth
+## Thread to nth
 
 You can also thread into arbitrary positions with _nth_
 
