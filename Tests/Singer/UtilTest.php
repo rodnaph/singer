@@ -59,4 +59,10 @@ class UtilTest extends \PHPUnit_Framework_TestCase
             \Singer\Util\sort($lowToHigh, array(5, 1, 3))
         );
     }
+
+    public function testPickingAnItem()
+    {
+        $this->assertEquals(2, \Singer\Util\item(array(1,2), 1));
+        $this->assertEquals(3, \Singer\Util\item(array(1,2), 2, 3));
+    }
 }

@@ -79,3 +79,15 @@ $lowToHigh = function($a, $b) {
 
 sort($lowToHigh, $array);
 ```
+
+## item
+
+Pick an item at an index, or return the default.
+
+```php
+item(array(1, 2), 0) // => 1
+item(array(1, 2), 2, 3) // => 3
+``
+
+The optional third argument is the default 'not found'.
+

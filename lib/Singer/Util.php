@@ -99,3 +99,19 @@ function sort($f, array $args)
 
     return $args;
 }
+
+/**
+ * Pick an item at an index (or use default)
+ *
+ * @param array $args
+ * @param integer $index
+ * @param mixed $default
+ *
+ * @return mixed
+ */
+function item(array $args, $index, $default = null)
+{
+    return isset($args[$index])
+        ? $args[$index]
+        : $default;
+}
