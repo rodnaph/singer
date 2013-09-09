@@ -180,6 +180,6 @@ function pop(array $args = null)
 function count(array $args = null)
 {
     return $args
-        ? count($args)
+        ? \count($args)
         : 0;
 }
