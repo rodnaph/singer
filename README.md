@@ -15,7 +15,7 @@ use Singer\Thread as T;
 
 T::create(array(1,2,3))
     ->array_map($inc)
-    ->first()
+    ->threadFirst()
     ->array_filter($even)
     ->value(); // array(2, 4)
 ```
@@ -44,9 +44,9 @@ function array_last($array)
 }
 
 T::create(array(1,2,3))
-    ->last()
+    ->threadLast()
     ->array_last()
-    ->first()
+    ->threadFirst()
     ->range(10)
     ->value(); // array(3,4,5,6,7,8,9,10);
 ```
@@ -55,11 +55,11 @@ Contrived, but an example.
 
 ## Thread to nth
 
-You can also thread into arbitrary positions with _nth_
+You can also thread into arbitrary positions with _threadNth_
 
 ```php
 T::create($x)
-    ->nth(3)
+    ->threadNth(3)
     ->someFunc($one, $two)
     ->value();
 ```
@@ -74,7 +74,7 @@ the namespace, use the _inNamespace_ method.
 
 ```php
 T::create('foo bar baz')
-    ->first()
+    ->threadFirst()
     ->inNamespace('String\Utils')
     ->sentenceCase()
     ->inNamespace('Word\Utils')

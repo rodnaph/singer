@@ -26,11 +26,11 @@ class Thread
      */
     public static function create($context)
     {
-        $t = new Thread($context);
-        $t->last();
-        $t->inNamespace('');
+        $thread = new Thread($context);
 
-        return $t;
+        return $thread
+            ->threadLast()
+            ->inNamespace('');
     }
 
     /**
@@ -59,7 +59,7 @@ class Thread
      *
      * @return Thread
      */
-    public function first()
+    public function threadFirst()
     {
         $this->threader = function ($context, $args) {
             array_unshift($args, $context);
@@ -74,7 +74,7 @@ class Thread
      *
      * @return Thread
      */
-    public function last()
+    public function threadLast()
     {
         $this->threader = function ($context, $args) {
             array_push($args, $context);
@@ -91,7 +91,7 @@ class Thread
      *
      * @return Thread
      */
-    public function nth($n)
+    public function threadNth($n)
     {
         $this->threader = function ($context, $args) use ($n) {
             array_splice($args, $n - 1, 0, array($context));

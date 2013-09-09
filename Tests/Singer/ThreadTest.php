@@ -32,7 +32,7 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     {
         $res = Thread::create(array(1,2,3))
             ->array_map($this->inc)
-            ->first()
+            ->threadFirst()
             ->array_filter($this->odd)
             ->value();
         $this->assertEquals(array(3), array_values($res));
@@ -69,9 +69,9 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     public function testThreadingNthArgument()
     {
         $res = Thread::create(array(1,2,3))
-            ->nth(2)
+            ->threadNth(2)
             ->array_map($this->inc)
-            ->nth(1)
+            ->threadNth(1)
             ->array_filter($this->odd)
             ->value();
         $this->assertEquals(array(3), array_values($res));
