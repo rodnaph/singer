@@ -90,4 +90,11 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(\Singer\Util\same($x, $x));
         $this->assertFalse(\Singer\Util\same($x, $y));
     }
+
+    public function testPop()
+    {
+        $this->assertEquals(2, \Singer\Util\pop(array(1,2)));
+        $this->assertNull(\Singer\Util\pop(array()));
+        $this->assertNull(\Singer\Util\pop(null));
+    }
 }

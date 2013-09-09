@@ -155,3 +155,19 @@ function debug()
 
     exit(1);
 }
+
+/**
+ * Pop an item from the end of the array (without mutating the array)
+ *
+ * @param array $args
+ *
+ * @return mixed
+ */
+function pop(array $args = null)
+{
+    $count = count($args);
+
+    return $count > 0
+        ? $args[$count - 1]
+        : null;
+}

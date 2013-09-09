@@ -122,3 +122,13 @@ Prints out the arguments and exits.
 debug(1) => // '1'
 ```
 
+## pop
+
+Non-destructively pop an item from the end of an array
+
+```php
+pop(array(1, 2)); // => 2
+pop(array());     // => null
+pop(null);        // => null
+```
+
