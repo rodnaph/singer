@@ -70,10 +70,10 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testPickingAnItem()
+    public function testPickingAnNth()
     {
-        $this->assertEquals(2, \Singer\Util\item(array(1,2), 1));
-        $this->assertEquals(3, \Singer\Util\item(array(1,2), 2, 3));
+        $this->assertEquals(2, \Singer\Util\nth(array(1,2), 1));
+        $this->assertEquals(3, \Singer\Util\nth(array(1,2), 2, 3));
     }
 
     public function testEquals()

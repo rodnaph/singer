@@ -111,7 +111,7 @@ function sort($f, array $args)
  *
  * @return mixed
  */
-function item(array $args, $index, $default = null)
+function nth(array $args, $index, $default = null)
 {
     return isset($args[$index])
         ? $args[$index]

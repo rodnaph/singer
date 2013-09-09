@@ -82,13 +82,13 @@ $lowToHigh = function($a, $b) {
 sort($lowToHigh, $array);
 ```
 
-## item
+## nth
 
-Pick an item at an index, or return the default.
+Pick an item at the nth position, or return the default.
 
 ```php
-item(array(1, 2), 0) // => 1
-item(array(1, 2), 2, 3) // => 3
+nth(array(1, 2), 0);    // => 1
+nth(array(1, 2), 2, 3); // => 3
 ``
 
 The optional third argument is the default 'not found'.
@@ -98,8 +98,8 @@ The optional third argument is the default 'not found'.
 Test two items are loosely equal.
 
 ```php
-equals(1, 1) // => true
-equals(1, 2) // => false
+equals(1, 1); // => true
+equals(1, 2); // => false
 ```
 
 ## same
@@ -110,8 +110,8 @@ Test two items refer to the same variable.
 $x = new DateTime();
 $y = new DateTime();
 
-same($x, $x) // => true
-same($x, $y) // => false
+same($x, $x); // => true
+same($x, $y); // => false
 ``
 
 ## debug
@@ -119,7 +119,7 @@ same($x, $y) // => false
 Prints out the arguments and exits.
 
 ```php
-debug(1) => // '1'
+debug(1); => // '1'
 ```
 
 ## pop
