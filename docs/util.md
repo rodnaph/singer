@@ -27,6 +27,8 @@ $result = filter(
 );
 ```
 
+Note, unlike array_filter indexes are reset.
+
 ## reduce
 
 Wrapper for *array_reduce*

@@ -26,6 +26,16 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($actual));
     }
 
+    public function testFilterResetsArrayIndexes()
+    {
+        $even = function ($x) {
+            return $x % 2 == 0;
+        };
+        $actual = \Singer\Util\filter($even, array(1, 2, 3));
+
+        $this->assertEquals(2, $actual[0]);
+    }
+
     public function testReduce()
     {
         $sum = function ($acc, $x) {

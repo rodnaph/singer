@@ -21,7 +21,9 @@ function map($f, array $args)
  */
 function filter($f, array $args)
 {
-    return array_filter($args, $f);
+    return array_values(
+        array_filter($args, $f)
+    );
 }
 
 /**
