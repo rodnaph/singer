@@ -97,4 +97,11 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertNull(\Singer\Util\pop(array()));
         $this->assertNull(\Singer\Util\pop(null));
     }
+
+    public function testCount()
+    {
+        $this->assertEquals(0, \Singer\Util\count(null));
+        $this->assertEquals(0, \Singer\Util\count(array()));
+        $this->assertEquals(2, \Singer\Util\count(array(1, 2)));
+    }
 }

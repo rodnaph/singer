@@ -171,3 +171,15 @@ function pop(array $args = null)
         ? $args[$count - 1]
         : null;
 }
+
+/**
+ * @param array $args
+ *
+ * @return integer
+ */
+function count(array $args = null)
+{
+    return $args
+        ? count($args)
+        : 0;
+}

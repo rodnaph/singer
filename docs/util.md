@@ -132,3 +132,13 @@ pop(array());     // => null
 pop(null);        // => null
 ```
 
+## count
+
+Count the items in an array.
+
+```php
+count(null);        // => 0
+count(array());     // => 0
+count(array(1, 2)); // => 2
+```
+
