@@ -65,4 +65,19 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, \Singer\Util\item(array(1,2), 1));
         $this->assertEquals(3, \Singer\Util\item(array(1,2), 2, 3));
     }
+
+    public function testEquals()
+    {
+        $this->assertTrue(\Singer\Util\equals(1, 1));
+        $this->assertFalse(\Singer\Util\equals(1, 2));
+    }
+
+    public function testSame()
+    {
+        $x = new \stdclass();
+        $y = new \stdclass();
+
+        $this->assertTrue(\Singer\Util\same($x, $x));
+        $this->assertFalse(\Singer\Util\same($x, $y));
+    }
 }

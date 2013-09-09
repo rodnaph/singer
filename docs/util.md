@@ -91,3 +91,32 @@ item(array(1, 2), 2, 3) // => 3
 
 The optional third argument is the default 'not found'.
 
+## equals
+
+Test two items are loosely equal.
+
+```php
+equals(1, 1) // => true
+equals(1, 2) // => false
+```
+
+## same
+
+Test two items refer to the same variable.
+
+```php
+$x = new DateTime();
+$y = new DateTime();
+
+same($x, $x) // => true
+same($x, $y) // => false
+``
+
+## debug
+
+Prints out the arguments and exits.
+
+```php
+debug(1) => // '1'
+```
+

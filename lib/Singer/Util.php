@@ -115,3 +115,41 @@ function item(array $args, $index, $default = null)
         ? $args[$index]
         : $default;
 }
+
+/**
+ * Test two items are loosely equal
+ *
+ * @param mixed $x
+ * @param mixed $y
+ *
+ * @return boolean
+ */
+function equals($x, $y)
+{
+    return $x == $y;
+}
+
+/**
+ * Test two variables are strictly equal
+ *
+ * @param mixed $x
+ * @param mixed $y
+ *
+ * @return boolean
+ */
+function same($x, $y)
+{
+    return $x === $y;
+}
+
+/**
+ * Debug the passed arguments and exit
+ *
+ * @param boolean $andDie
+ */
+function debug()
+{
+    print_r(func_get_args());
+
+    exit(1);
+}
