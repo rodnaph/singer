@@ -89,7 +89,7 @@ Pick an item at the nth position, or return the default.
 ```php
 nth(array(1, 2), 0);    // => 1
 nth(array(1, 2), 2, 3); // => 3
-``
+```
 
 The optional third argument is the default 'not found'.
 
