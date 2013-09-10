@@ -4,38 +4,61 @@ PHP provides lots of utilities, but calling them in an understandable way usuall
 leads to a mess of code.  Singer tries to clean this up by allowing 'threading' of
 results through functions/methods, giving you a readable chain of business logic.
 
-## Usage
+## Threading
 
-This example assumes two functions _$inc_ and _$even_, then uses PHP's standard
-library *array_map* to map _$inc_ over the array, and then also uses the standard
-*array_filter* to filter it with _$even_.  Finally fetching the resultant value.
+By 'threading' I don't mean operating system threads, I mean the threading of the result of one function/method into the next.  With PHP we usually need to either assign the results of function calls to temporary variables (to pass them in to the next function)…
+
+```php
+$values = array(1, 2, 3);
+$evenValues = array_filter($values, $even);
+$incdValues = array_map($inc, $evenValues);
+```
+
+Or we nest our function calls so the results go straight into the next…
+
+```php
+$result = array_map(
+	$inc,
+    array_filter(
+        $values,
+        $even
+    )
+);
+```
+
+This is a very simple example, the more steps your have in your data processing the worse it gets.
+
+## Singer Usage
+
+Taking the above simple example, this is how you can rewrite it using Singer.
 
 ```php
 use Singer\Thread as T;
 
-T::create(array(1,2,3))
-    ->array_map($inc)
-    ->threadFirst()
-    ->array_filter($even)
-    ->value(); // array(2, 4)
+// standard version
+
+$values = array(1, 2, 3);
+$evenValues = array_filter($values, $even);
+$incdValues = array_map($inc, $evenValues);
+
+// singer version
+
+T::singer($values)
+    ->filter($even)
+    ->map($inc)
+    ->value();
 ```
 
-So we can use Singer to stitch together bog standard functions in a threaded/chainable
-way.
+So, Singer allows stitching together of functions, so our code doesn't need to be concerned
+with handling temporary variables to control the flow of the data.  Instead of following variable assignments and tracking them being fed back into other functions, the flow of processing is much more evident.
 
-By default Singer does 'thread last', or inserting the context as the last argument
-to the function.  You can see from the above example we can switch between this and
-'thread first' at will (here to get around the annoyingness of PHPs seemingly
-random parameter orders).
+## Thread First/Last
 
-## Installation
+There are a few different methods of threading that Singer allows.  The default is called 'thread last' - which means that the result of each function is passed as the *last* argument to the next function.
 
-To install Singer you can either just clone/download from Github, or install 
-[through Composer](https://packagist.org/packages/rodnaph/singer).
+The second way you can thread data is called 'thread first' - and means that the result of each function is passed as the *first* parameter to the next in the chain.
 
-## Thread first/last
-
-As shown above you can switch between these methods during a chain of execution.
+You can switch between these using *threadFirst* and *threadLast* methods, as shown below.
 
 ```php
 function array_last($array)
@@ -51,7 +74,7 @@ T::create(array(1,2,3))
     ->value(); // array(3,4,5,6,7,8,9,10);
 ```
 
-Contrived, but an example.
+In this example we're calling our own *array_last* function, and also the core PHP function *range*.
 
 ## Thread to nth
 
@@ -122,8 +145,11 @@ T::singer($array)
     ->value();
 ```
 
+## Installation
+
+To install Singer you can either just clone/download from Github, or install 
+[through Composer](https://packagist.org/packages/rodnaph/singer).
+
 ## About
 
-Singer is just playing with some ideas to see if this could be a useful utility in
-PHP.  If you'd like to contribute ideas or code just open an issue or pull request.
-
+If you'd like to contribute ideas or code just open an issue or pull request.
