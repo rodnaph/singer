@@ -123,27 +123,45 @@ T::create('foo')
 
 And as usual, these can be included as needed during execution.
 
-## Utilities
+## Two constructors
 
-There is also a [utilities namespace](docs/util.md) with some utility functions, meant to provide
-a hopefully cleaner API than PHP's.
+There are two constructors for creating a Singer object, the first is _create_
 
 ```php
-T::create(array(1,2,3))
-    ->inNamespace('Singer\Util')
+T::create($initial);
+```
+
+Which will create a threading object, using _thread last_, in the root namespace.  You can use this right away to call all the PHP standard library functions.
+
+The second constructor is _singer_
+
+```php
+T::singer($initial);
+```
+
+Which creates a threading object using _thread last_, in the [utilities namespace](docs/util.md). This namespace provides a bunch of function which are meant to provide a cleaner and more consistent API than PHP's.
+
+```php
+T::singer(array(1,2,3))
     ->map($inc)
     ->filter($even)
     ->reduce($toTotal, 0)
     ->value();
 ```
 
-You can create a threader using this namespace as the default using the *singer* function.
+Both these methods create the same threader object, just with different default namespaces.  You can switch them about with all the options above.
 
-```php
-T::singer($array)
-    ->map($etc)
-    ->value();
-```
+## Isn't this like...
+
+Chaining?  No, chaining is a technique of calling multiple methods on the same object.
+
+Undercore.js chaining? More like this yeah, but with the control to thread first/last and nth.
+
+## What doesn't Singer do?
+
+Singer works best when you're using a more functional approach to writing PHP, and if you use the functions in the utilities namespace (I think) it works quite nicely.
+
+While it does support calling method on objects, if you do find yourself doing this a lot then maybe you should think if it's really the most understandable thing (as your logic is probably to spread across disparate objects...  or something...).
 
 ## Installation
 
