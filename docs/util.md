@@ -92,14 +92,6 @@ same($x, $x); // => true
 same($x, $y); // => false
 ``
 
-## debug
-
-Prints out the arguments and exits.
-
-```php
-debug(1); => // '1'
-```
-
 ## first
 
 Return the first item of an array, or default.

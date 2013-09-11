@@ -151,6 +151,28 @@ T::singer(array(1,2,3))
 
 Both these methods create the same threader object, just with different default namespaces.  You can switch them about with all the options above.
 
+## Debugging...
+
+It can be useful to check the value of the context that is currently being 
+processed at different points.  To do this you can use the _debug_ function.
+
+```php
+T::create(array(1, 2, 3))
+    ->map($inc)
+    ->debug() // will print_r(array(2, 3, 4)) and exit
+    ->filter($odd)
+    ->value();
+```
+
+If you don't want to use the default *print_r* then you can pass your own
+function which will be given the context.
+
+```php
+T::create(array(1, 2, 3))
+    ->map($inc)
+    ->debug(function($context) { ... });
+```
+
 ## Isn't this like...
 
 Chaining?  No, chaining is a technique of calling multiple methods on the same object.

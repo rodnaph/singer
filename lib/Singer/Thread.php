@@ -2,6 +2,8 @@
 
 namespace Singer;
 
+use Closure;
+
 class Thread
 {
     /**
@@ -10,12 +12,12 @@ class Thread
     private $context;
 
     /**
-     * @var Callable
+     * @var Closure
      */
     private $threader;
 
     /**
-     * @var Callable
+     * @var Closure
      */
     private $caller;
 
@@ -164,6 +166,22 @@ class Thread
     public function value()
     {
         return $this->context;
+    }
+
+    /**
+     * Debug the context, using print_r by default, or the
+     * custom function if specified.
+     *
+     * @param Closure $debugger
+     */
+    public function debug($debugger = null)
+    {
+        call_user_func_array(
+            $debugger ?: '\print_r',
+            array($this->context)
+        );
+
+        exit(1);
     }
 
     /**

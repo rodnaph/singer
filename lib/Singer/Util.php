@@ -101,18 +101,6 @@ function same($x, $y)
 }
 
 /**
- * Debug the passed arguments and exit
- *
- * @param boolean $andDie
- */
-function debug()
-{
-    print_r(func_get_args());
-
-    exit(1);
-}
-
-/**
  * Return first item of array, or default (null)
  *
  * @param array $args
