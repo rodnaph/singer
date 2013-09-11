@@ -48,28 +48,6 @@ $result = reduce(
 );
 ```
 
-## sum
-
-Allows giving a function which returns an assoc of array
-of keys and values, where the values will be summed over
-the series.
-
-```php
-sum(
-  function ($item) {
-    return array(
-      "total" => $item
-    );
-  },
-  array(
-    1, 2, 3
-  )
-) // => array('total' => 6)
-```
-
-This makes it a so you can avoid messing around with the
-accumulator, because mutating it is icky.
-
 ## sort
 
 Provide a user defined sorting function.
@@ -122,14 +100,28 @@ Prints out the arguments and exits.
 debug(1); => // '1'
 ```
 
-## pop
+## first
 
-Non-destructively pop an item from the end of an array
+Return the first item of an array, or default.
 
 ```php
-pop(array(1, 2)); // => 2
-pop(array());     // => null
-pop(null);        // => null
+first(array(1, 2)); // 1
+first(array());     // null
+first(null);        // null
+first(array(), 1);  // 1
+first(null, true);  // true
+```
+
+## last
+
+Return the last item of an array, or default.
+
+```php
+last(array(1, 2)); // => 2
+last(array());     // null
+last(null);        // null
+last(array(), 1);  // 1
+last(null, true);  // true
 ```
 
 ## count

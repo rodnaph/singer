@@ -46,18 +46,6 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(6, $actual);
     }
 
-    public function testSum()
-    {
-        $sum = function ($x) {
-            return array(
-                'total' => $x
-            );
-        };
-        $actual = \Singer\Util\sum($sum, array(1, 2, 3));
-
-        $this->assertEquals(6, $actual['total']);
-    }
-
     public function testSort()
     {
         $lowToHigh = function($a, $b) {
@@ -91,11 +79,24 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(\Singer\Util\same($x, $y));
     }
 
-    public function testPop()
+    public function testFirst()
     {
-        $this->assertEquals(2, \Singer\Util\pop(array(1,2)));
-        $this->assertNull(\Singer\Util\pop(array()));
-        $this->assertNull(\Singer\Util\pop(null));
+        $this->assertEquals(1, \Singer\Util\first(array(1,2)));
+        $this->assertNull(\Singer\Util\first(array()));
+        $this->assertNull(\Singer\Util\first(null));
+
+        $this->assertEquals(1, \Singer\Util\first(array(), 1));
+        $this->assertEquals(1, \Singer\Util\first(null, 1));
+    }
+
+    public function testLast()
+    {
+        $this->assertEquals(2, \Singer\Util\last(array(1,2)));
+        $this->assertNull(\Singer\Util\last(array()));
+        $this->assertNull(\Singer\Util\last(null));
+
+        $this->assertEquals(1, \Singer\Util\last(array(), 1));
+        $this->assertEquals(1, \Singer\Util\last(null, 1));
     }
 
     public function testCount()

@@ -46,50 +46,6 @@ function reduce($f, $x, $y = null)
 }
 
 /**
- * Allows summing of multiple values returned from function
- * over a series.
- *
- * eg.
- *
- * sum(
- *   function ($item) {
- *     return array(
- *       'total' => $item
- *     );
- *   },
- *   array(
- *     1, 2, 3
- *   )
- * )
- *
- * =>
- *
- * array(
- *   'total' => 6
- * )
- *
- * @param Callable $f
- * @param array $args
- *
- * @return array
- */
-function sum($f, array $args)
-{
-    $summer = function ($acc, $x) use ($f) {
-        foreach ($f($x) as $k => $v) {
-            if (!isset($acc[$k])) {
-                $acc[$k] = 0;
-            }
-            $acc[$k] += $v;
-        }
-
-        return $acc;
-    };
-
-    return reduce($summer, array(), $args);
-}
-
-/**
  * @param Callable $f
  * @param array $args
  *
@@ -157,19 +113,35 @@ function debug()
 }
 
 /**
- * Pop an item from the end of the array (without mutating the array)
+ * Return first item of array, or default (null)
  *
  * @param array $args
+ * @param mixed $default
  *
  * @return mixed
  */
-function pop(array $args = null)
+function first(array $args = null, $default = null)
+{
+    return isset($args[0])
+        ? $args[0]
+        : $default;
+}
+
+/**
+ * Return last item of an array, or default (null)
+ *
+ * @param array $args
+ * @param mixed $default
+ *
+ * @return mixed
+ */
+function last(array $args = null, $default = null)
 {
     $count = count($args);
 
     return $count > 0
         ? $args[$count - 1]
-        : null;
+        : $default;
 }
 
 /**
