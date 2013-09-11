@@ -2,8 +2,10 @@
 
 namespace Singer\Util;
 
+use Closure;
+
 /**
- * @param Callable $f
+ * @param Closure $f
  * @param array $args
  *
  * @return array
@@ -14,7 +16,7 @@ function map($f, array $args)
 }
 
 /**
- * @param Callable $f
+ * @param Closure $f
  * @param array $args
  *
  * @return array
@@ -32,7 +34,7 @@ function filter($f, array $args)
  *    reduce(func, array)
  *    reduce(func, initial, array)
  *
- * @param Callable $f
+ * @param Closure $f
  * @param mixed $x
  * @param mixed $y
  *
@@ -46,7 +48,7 @@ function reduce($f, $x, $y = null)
 }
 
 /**
- * @param Callable $f
+ * @param Closure $f
  * @param array $args
  *
  * @return array
