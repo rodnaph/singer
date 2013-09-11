@@ -49,14 +49,6 @@ class Thread
     }
 
     /**
-     * @param string $context
-     */
-    protected function __construct($context)
-    {
-        $this->context = $context;
-    }
-
-    /**
      * Change to using 'thread first'
      *
      * @return Thread
@@ -182,6 +174,14 @@ class Thread
         );
 
         exit(1);
+    }
+
+    /**
+     * @param string $context
+     */
+    protected function __construct($context)
+    {
+        $this->context = $context;
     }
 
     /**
