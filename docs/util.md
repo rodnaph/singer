@@ -5,6 +5,17 @@ This namespace has some utility functions which sometimes clean-up
 or replace PHPs standard library versions (as their interfaces are
 usually pretty clunky).
 
+## f
+
+Returns a Closure around a named function, so that function can then
+be used as a Closure.
+
+```php
+$count = f('count');
+
+$count(array(1, 2)); // 2
+```
+
 ## map
 
 Wrapper for *array_map*

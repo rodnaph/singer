@@ -105,4 +105,11 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, \Singer\Util\count(array()));
         $this->assertEquals(2, \Singer\Util\count(array(1, 2)));
     }
+
+    public function testF()
+    {
+        $count = \Singer\Util\f('Singer\Util\count');
+
+        $this->assertEquals(2, $count(array(1, 2)));
+    }
 }

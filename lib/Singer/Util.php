@@ -5,6 +5,23 @@ namespace Singer\Util;
 use Closure;
 
 /**
+ * Returns a Closure over a named function
+ *
+ * @param string $name
+ *
+ * @return Closure
+ */
+function f($name)
+{
+    return function () use ($name) {
+        return call_user_func_array(
+            $name,
+            func_get_args()
+        );
+    };
+}
+
+/**
  * @param Closure $f
  * @param array $array
  *
