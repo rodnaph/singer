@@ -6,25 +6,25 @@ use Closure;
 
 /**
  * @param Closure $f
- * @param array $args
+ * @param array $array
  *
  * @return array
  */
-function map($f, array $args)
+function map($f, array $array)
 {
-    return array_map($f, $args);
+    return array_map($f, $array);
 }
 
 /**
  * @param Closure $f
- * @param array $args
+ * @param array $array
  *
  * @return array
  */
-function filter($f, array $args)
+function filter($f, array $array)
 {
     return array_values(
-        array_filter($args, $f)
+        array_filter($array, $f)
     );
 }
 
@@ -49,30 +49,30 @@ function reduce($f, $x, $y = null)
 
 /**
  * @param Closure $f
- * @param array $args
+ * @param array $array
  *
  * @return array
  */
-function sort($f, array $args)
+function sort($f, array $array)
 {
-    usort($args, $f);
+    usort($array, $f);
 
-    return $args;
+    return $array;
 }
 
 /**
  * Pick an item at an index (or use default)
  *
- * @param array $args
+ * @param array $array
  * @param integer $index
  * @param mixed $default
  *
  * @return mixed
  */
-function nth(array $args, $index, $default = null)
+function nth(array $array, $index, $default = null)
 {
-    return isset($args[$index])
-        ? $args[$index]
+    return isset($array[$index])
+        ? $array[$index]
         : $default;
 }
 
@@ -105,43 +105,43 @@ function same($x, $y)
 /**
  * Return first item of array, or default (null)
  *
- * @param array $args
+ * @param array $array
  * @param mixed $default
  *
  * @return mixed
  */
-function first(array $args = null, $default = null)
+function first(array $array = null, $default = null)
 {
-    return isset($args[0])
-        ? $args[0]
+    return isset($array[0])
+        ? $array[0]
         : $default;
 }
 
 /**
  * Return last item of an array, or default (null)
  *
- * @param array $args
+ * @param array $array
  * @param mixed $default
  *
  * @return mixed
  */
-function last(array $args = null, $default = null)
+function last(array $array = null, $default = null)
 {
-    $count = count($args);
+    $count = count($array);
 
     return $count > 0
-        ? $args[$count - 1]
+        ? $array[$count - 1]
         : $default;
 }
 
 /**
- * @param array $args
+ * @param array $array
  *
  * @return integer
  */
-function count(array $args = null)
+function count(array $array = null)
 {
-    return $args
-        ? \count($args)
+    return $array
+        ? \count($array)
         : 0;
 }
