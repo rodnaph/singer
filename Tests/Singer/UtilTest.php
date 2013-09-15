@@ -87,6 +87,8 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(1, \Singer\Util\first(array(), 1));
         $this->assertEquals(1, \Singer\Util\first(null, 1));
+
+        $this->assertEquals('bar', \Singer\Util\first(array('foo' => 'bar')));
     }
 
     public function testLast()
@@ -97,6 +99,8 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(1, \Singer\Util\last(array(), 1));
         $this->assertEquals(1, \Singer\Util\last(null, 1));
+
+        $this->assertEquals('bar', \Singer\Util\last(array('x' => 'y', 'foo' => 'bar')));
     }
 
     public function testCount()

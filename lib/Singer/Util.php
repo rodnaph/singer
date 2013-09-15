@@ -129,8 +129,8 @@ function same($x, $y)
  */
 function first(array $array = null, $default = null)
 {
-    return isset($array[0])
-        ? $array[0]
+    return is_array($array)
+        ? array_shift($array) ?: $default
         : $default;
 }
 
@@ -144,10 +144,8 @@ function first(array $array = null, $default = null)
  */
 function last(array $array = null, $default = null)
 {
-    $count = count($array);
-
-    return $count > 0
-        ? $array[$count - 1]
+    return is_array($array)
+        ? array_pop($array) ?: $default
         : $default;
 }
 

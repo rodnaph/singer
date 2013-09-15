@@ -108,11 +108,12 @@ same($x, $y); // => false
 Return the first item of an array, or default.
 
 ```php
-first(array(1, 2)); // 1
-first(array());     // null
-first(null);        // null
-first(array(), 1);  // 1
-first(null, true);  // true
+first(array(1, 2));                  // 1
+first(array());                      // null
+first(null);                         // null
+first(array(), 1);                   // 1
+first(null, true);                   // true
+first(array('foo' => 'bar'), true);  // 'bar'
 ```
 
 ## last
@@ -120,11 +121,12 @@ first(null, true);  // true
 Return the last item of an array, or default.
 
 ```php
-last(array(1, 2)); // => 2
-last(array());     // null
-last(null);        // null
-last(array(), 1);  // 1
-last(null, true);  // true
+last(array(1, 2));                  // => 2
+last(array());                      // null
+last(null);                         // null
+last(array(), 1);                   // 1
+last(null, true);                   // true
+last(array('foo' => 'bar'), true);  // 'bar'
 ```
 
 ## count
