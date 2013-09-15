@@ -118,4 +118,14 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(1), \Singer\Util\cons(1, array()));
         $this->assertEquals(array(2, 1), \Singer\Util\cons(2, array(1)));
     }
+
+    public function testContains()
+    {
+        $array = array(1, 'foo');
+
+        $this->assertTrue(\Singer\Util\contains($array, 1));
+        $this->assertTrue(\Singer\Util\contains($array, 'foo'));
+        $this->assertFalse(\Singer\Util\contains($array, 2));
+        $this->assertFalse(\Singer\Util\contains($array, 'bar'));
+    }
 }

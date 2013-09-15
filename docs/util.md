@@ -146,3 +146,12 @@ cons(1, array());    // => array(1)
 cons(2, array(1));   // => array(2, 1)
 ```
 
+## contains
+
+Indiciates if an array contains the specified item.
+
+```php
+contains(array(1, 2), 1);   // => true
+contains(array(1, 2), 3);   // => false
+```
+

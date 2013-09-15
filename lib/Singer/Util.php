@@ -177,3 +177,16 @@ function cons($item, array $array)
 
     return $array;
 }
+
+/**
+ * Indicates if the array contains the item
+ *
+ * @param array $array
+ * @param mixed $item
+ *
+ * @return boolean
+ */
+function contains(array $array, $item)
+{
+    return (array_search($item, $array) !== false);
+}
