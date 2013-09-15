@@ -149,4 +149,12 @@ class UtilTest extends \PHPUnit_Framework_TestCase
             \Singer\Util\keys(array('foo' => 1, 'bar' => 2))
         );
     }
+
+    public function testValues()
+    {
+        $this->assertEquals(
+            array(1, 2),
+            \Singer\Util\values(array('foo' => 1, 'bar' => 2))
+        );
+    }
 }

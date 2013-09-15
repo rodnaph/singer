@@ -173,3 +173,11 @@ Return the keys from the array.
 keys(array('foo' => 1));        // array('foo')
 ```
 
+## values
+
+Return the values from the array.
+
+```php
+keys(array('foo' => 1));        // array(1)
+```
+

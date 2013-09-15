@@ -214,3 +214,15 @@ function keys(array $array)
 {
     return array_keys($array);
 }
+
+/**
+ * Return array values
+ *
+ * @param array $array
+ *
+ * @return array
+ */
+function values(array $array)
+{
+    return array_values($array);
+}
