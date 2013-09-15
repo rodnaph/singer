@@ -89,6 +89,10 @@ T::create(array(1,2,3))
 In this example we're calling our own *array_last* function, and also the core 
 PHP function *range*.
 
+Thread last is meant to operate on functions which take an _array_ ("sequence"
+functions like *array_map*), while thread first is meant to work with 
+functions that operate on a single value (eg. *str_to_upper*).
+
 ## Thread to nth
 
 You can also thread into arbitrary positions with _threadNth_
