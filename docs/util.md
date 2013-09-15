@@ -155,3 +155,11 @@ contains(array(1, 2), 1);   // => true
 contains(array(1, 2), 3);   // => false
 ```
 
+## distinct
+
+Returns distinct items from the array.
+
+```php
+distinct(array(1, 1, 2, 2))     // => array(1, 2)
+```
+

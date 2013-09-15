@@ -128,4 +128,13 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(\Singer\Util\contains($array, 2));
         $this->assertFalse(\Singer\Util\contains($array, 'bar'));
     }
+
+    public function testDistinct()
+    {
+        $result = \Singer\Util\distinct(array(1, 1, 2, 2, 1, 1, 2));
+
+        $this->assertEquals(2, count($result));
+        $this->assertTrue(\Singer\Util\contains($result, 1));
+        $this->assertTrue(\Singer\Util\contains($result, 2));
+    }
 }

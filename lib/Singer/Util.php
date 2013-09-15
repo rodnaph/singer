@@ -190,3 +190,17 @@ function contains(array $array, $item)
 {
     return (array_search($item, $array) !== false);
 }
+
+/**
+ * Return distinct items, using optional matcher
+ *
+ * @param array $array
+ *
+ * @return array
+ */
+function distinct(array $array = null)
+{
+    return array_values(
+        array_unique($array)
+    );
+}
