@@ -76,8 +76,8 @@ sort($lowToHigh, $array);
 Pick an item at the nth position, or return the default.
 
 ```php
-nth(array(1, 2), 0);    // => 1
-nth(array(1, 2), 2, 3); // => 3
+nth(array(1, 2), 0);    // 1
+nth(array(1, 2), 2, 3); // 3
 ```
 
 The optional third argument is the default 'not found'.
@@ -87,8 +87,8 @@ The optional third argument is the default 'not found'.
 Test two items are loosely equal.
 
 ```php
-equals(1, 1); // => true
-equals(1, 2); // => false
+equals(1, 1); // true
+equals(1, 2); // false
 ```
 
 ## same
@@ -99,8 +99,8 @@ Test two items refer to the same variable.
 $x = new DateTime();
 $y = new DateTime();
 
-same($x, $x); // => true
-same($x, $y); // => false
+same($x, $x); // true
+same($x, $y); // false
 ``
 
 ## first
@@ -121,7 +121,7 @@ first(array('foo' => 'bar'), true);  // 'bar'
 Return the last item of an array, or default.
 
 ```php
-last(array(1, 2));                  // => 2
+last(array(1, 2));                  // 2
 last(array());                      // null
 last(null);                         // null
 last(array(), 1);                   // 1
@@ -134,9 +134,9 @@ last(array('foo' => 'bar'), true);  // 'bar'
 Count the items in an array.
 
 ```php
-count(null);        // => 0
-count(array());     // => 0
-count(array(1, 2)); // => 2
+count(null);        // 0
+count(array());     // 0
+count(array(1, 2)); // 2
 ```
 
 ## cons
@@ -144,8 +144,8 @@ count(array(1, 2)); // => 2
 Add an item to the front of an array.
 
 ```php
-cons(1, array());    // => array(1)
-cons(2, array(1));   // => array(2, 1)
+cons(1, array());    // array(1)
+cons(2, array(1));   // array(2, 1)
 ```
 
 ## contains
@@ -153,8 +153,8 @@ cons(2, array(1));   // => array(2, 1)
 Indiciates if an array contains the specified item.
 
 ```php
-contains(array(1, 2), 1);   // => true
-contains(array(1, 2), 3);   // => false
+contains(array(1, 2), 1);   // true
+contains(array(1, 2), 3);   // false
 ```
 
 ## distinct
@@ -162,7 +162,7 @@ contains(array(1, 2), 3);   // => false
 Returns distinct items from the array.
 
 ```php
-distinct(array(1, 1, 2, 2))     // => array(1, 2)
+distinct(array(1, 1, 2, 2));     // array(1, 2)
 ```
 
 ## keys
@@ -180,4 +180,3 @@ Return the values from the array.
 ```php
 keys(array('foo' => 1));        // array(1)
 ```
-
