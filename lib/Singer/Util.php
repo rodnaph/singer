@@ -162,3 +162,18 @@ function count(array $array = null)
         ? \count($array)
         : 0;
 }
+
+/**
+ * Add an item to the front of an array
+ *
+ * @param mixed $item
+ * @param array $array
+ *
+ * @return array
+ */
+function cons($item, array $array)
+{
+    array_unshift($array, $item);
+
+    return $array;
+}

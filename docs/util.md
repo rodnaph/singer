@@ -137,3 +137,12 @@ count(array());     // => 0
 count(array(1, 2)); // => 2
 ```
 
+## cons
+
+Add an item to the front of an array.
+
+```php
+cons(1, array());    // => array(1)
+cons(2, array(1));   // => array(2, 1)
+```
+
