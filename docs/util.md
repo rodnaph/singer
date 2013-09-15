@@ -165,3 +165,11 @@ Returns distinct items from the array.
 distinct(array(1, 1, 2, 2))     // => array(1, 2)
 ```
 
+## keys
+
+Return the keys from the array.
+
+```php
+keys(array('foo' => 1));        // array('foo')
+```
+

@@ -141,4 +141,12 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(\Singer\Util\contains($result, 1));
         $this->assertTrue(\Singer\Util\contains($result, 2));
     }
+
+    public function testKeys()
+    {
+        $this->assertEquals(
+            array('foo', 'bar'),
+            \Singer\Util\keys(array('foo' => 1, 'bar' => 2))
+        );
+    }
 }

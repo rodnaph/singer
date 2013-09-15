@@ -202,3 +202,15 @@ function distinct(array $array = null)
         array_unique($array)
     );
 }
+
+/**
+ * Return array keys
+ *
+ * @param array $array
+ *
+ * @return array
+ */
+function keys(array $array)
+{
+    return array_keys($array);
+}
