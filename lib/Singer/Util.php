@@ -226,3 +226,17 @@ function values(array $array)
 {
     return array_values($array);
 }
+
+/**
+ * Sum values of an array
+ *
+ * @param array $array
+ *
+ * @return mixed
+ */
+function sum(array $array = null)
+{
+    return $array
+        ? array_sum($array)
+        : 0;
+}

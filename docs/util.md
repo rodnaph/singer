@@ -101,7 +101,7 @@ $y = new DateTime();
 
 same($x, $x); // true
 same($x, $y); // false
-``
+```
 
 ## first
 
@@ -180,3 +180,14 @@ Return the values from the array.
 ```php
 keys(array('foo' => 1));        // array(1)
 ```
+
+## sum
+
+Sum the values of an array.
+
+```php
+sum(null);                       // 0
+sum(array());                    // 0
+sum(array(1, 2, 3));             // 6
+```
+

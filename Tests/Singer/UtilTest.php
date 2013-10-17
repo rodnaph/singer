@@ -157,4 +157,11 @@ class UtilTest extends \PHPUnit_Framework_TestCase
             \Singer\Util\values(array('foo' => 1, 'bar' => 2))
         );
     }
+
+    public function testSum()
+    {
+        $this->assertEquals(0, \Singer\Util\sum(null));
+        $this->assertEquals(0, \Singer\Util\sum(array()));
+        $this->assertEquals(6, \Singer\Util\sum(array(1, 2, 3)));
+    }
 }
