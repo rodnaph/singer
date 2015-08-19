@@ -2,7 +2,8 @@
     "name": "rodnaph/singer",
     "description": "PHP Threading",
     "autoload": {
-        "psr-0": { "": "lib/" }
+        "psr-0": { "": "lib/" },
+        "files": ["lib/Singer/Util.php"]
     },
     "require": {
         "php": ">=5.3.3"
