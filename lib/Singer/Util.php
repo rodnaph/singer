@@ -78,6 +78,19 @@ function sort($f, array $array)
 }
 
 /**
+ * @param Closure $f
+ * @param array $array
+ *
+ * @return array
+ */
+function asort($f, array $array)
+{
+    uasort($array, $f);
+
+    return $array;
+}
+
+/**
  * Pick an item at an index (or use default)
  *
  * @param array $array

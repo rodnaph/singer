@@ -58,6 +58,18 @@ class UtilTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testAssocSort()
+    {
+        $lowToHigh = function($a, $b) {
+            return $a > $b;
+        };
+
+        $this->assertEquals(
+            array('a' => 1, 'b' => 3, 'c' => 5),
+            \Singer\Util\asort($lowToHigh, array('c' => 5, 'a' => 1, 'b' => 3))
+        );
+    }
+
     public function testPickingAnNth()
     {
         $this->assertEquals(2, \Singer\Util\nth(array(1,2), 1));
