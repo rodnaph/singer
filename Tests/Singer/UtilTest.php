@@ -2,8 +2,6 @@
 
 namespace Singer;
 
-include __DIR__ . '/../../lib/Singer/Util.php';
-
 class UtilTest extends \PHPUnit_Framework_TestCase
 {
     public function testMap()
